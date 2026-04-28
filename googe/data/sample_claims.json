@@ -1,0 +1,49 @@
+{
+  "claims": [
+    {
+      "claim_id": "sample-001",
+      "content": "Scientists discover new cure for common cold using vitamin C",
+      "source_url": "https://news.example.com/science/vitamin-c-cure",
+      "source_platform": "news",
+      "author_id": "news_outlet_1",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "initial_verdict": "trusted"
+    },
+    {
+      "claim_id": "sample-002",
+      "content": "Government planning to ban all social media next month",
+      "source_url": "https://twitter.com/user123/status/123456",
+      "source_platform": "twitter",
+      "author_id": "user123",
+      "timestamp": "2024-01-15T11:00:00Z",
+      "initial_verdict": "false"
+    },
+    {
+      "claim_id": "sample-003",
+      "content": "Breaking: Celebrity involved in major scandal",
+      "source_url": "https://facebook.com/post/789",
+      "source_platform": "facebook",
+      "author_id": "user456",
+      "timestamp": "2024-01-15T11:30:00Z",
+      "initial_verdict": "unverified"
+    },
+    {
+      "claim_id": "sample-004",
+      "content": "Miracle supplement reverses aging in new study",
+      "source_url": "https://reddit.com/r/science/comments/abc",
+      "source_platform": "reddit",
+      "author_id": "reddit_user_1",
+      "timestamp": "2024-01-15T12:00:00Z",
+      "initial_verdict": "misleading"
+    },
+    {
+      "claim_id": "sample-005",
+      "content": "Bank accounts will be frozen next week - urgent alert",
+      "source_url": "https://twitter.com/user789/status/456",
+      "source_platform": "twitter",
+      "author_id": "user789",
+      "timestamp": "2024-01-15T12:30:00Z",
+      "initial_verdict": "false"
+    }
+  ]
+}

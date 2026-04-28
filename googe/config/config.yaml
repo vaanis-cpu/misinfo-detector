@@ -1,0 +1,74 @@
+app:
+  name: misinfo-detector
+  env: development
+  log_level: INFO
+
+models:
+  encoder:
+    name: microsoft/deberta-v3-base
+    device: auto
+    cache_dir: ./models/cache
+    max_length: 512
+  gnn:
+    type: graphsage
+    hidden_channels: 256
+    num_layers: 2
+    dropout: 0.2
+    checkpoint: ./models/checkpoints/graphsage.pt
+  temporal:
+    type: lstm
+    hidden_size: 128
+    num_layers: 2
+    checkpoint: ./models/checkpoints/lstm.pt
+
+storage:
+  neo4j:
+    uri: bolt://localhost:7687
+    user: neo4j
+    password: ${NEO4J_PASSWORD}
+    database: neo4j
+  redis:
+    host: localhost
+    port: 6379
+    db: 0
+    password: ${REDIS_PASSWORD}
+  sqlite:
+    path: ./data/misinfo.db
+
+streaming:
+  kafka:
+    bootstrap_servers: localhost:9092
+    topic: claims
+    consumer_group: misinfo-detector
+  flink:
+    host: localhost:8081
+  use_kafka: false  # Set to true in production
+  queue_size: 10000
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  cors_origins:
+    - http://localhost:3000
+    - http://localhost:8501
+  ws_ping_interval: 30
+
+graph:
+  max_depth: 5
+  snapshot_window_minutes: 15
+  pruning_threshold: 0.01
+
+risk:
+  thresholds:
+    low: 0.3
+    medium: 0.6
+    high: 0.8
+  min_confidence: 0.5
+
+preprocessing:
+  min_content_length: 10
+  max_content_length: 5000
+  languages:
+    - en
+    - hi
+    - es
